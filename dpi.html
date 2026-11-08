@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Direct Package Installer (DPI) · Santi PS4 Hub</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { background: #070b13; color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 24px 16px; }
+    .wrap { max-width: 640px; margin: 0 auto; }
+    .header { text-align: center; margin-bottom: 28px; }
+    .gold { color: #facc15; font-size: 26px; font-weight: 800; margin: 0 0 8px; text-transform: uppercase; letter-spacing: 1px; }
+    .sub { color: #94a3b8; font-size: 15px; margin: 0; }
+    .card { display: block; background: #0f172a; border: 2px solid #1e293b; border-radius: 12px; padding: 20px; margin-bottom: 16px; text-decoration: none; color: inherit; transition: all 0.2s; }
+    .card:hover { border-color: #38bdf8; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15); }
+    .card-title { font-size: 18px; font-weight: 700; color: #38bdf8; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; }
+    .badge { font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 9999px; background: #0369a1; color: #e0f2fe; }
+    .card-desc { font-size: 14px; color: #cbd5e1; line-height: 1.5; margin: 0; }
+    .info { background: #111827; border-left: 4px solid #facc15; border-radius: 8px; padding: 16px; margin-top: 24px; font-size: 14px; line-height: 1.6; color: #e2e8f0; }
+    .info code { background: #1e293b; padding: 2px 6px; border-radius: 4px; color: #fde047; font-size: 13px; }
+    .back { display: inline-block; margin-top: 20px; color: #94a3b8; text-decoration: none; font-size: 14px; }
+    .back:hover { color: #f8fafc; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <h1 class="gold">⚡ Direct Package Installer (DPI)</h1>
+      <p class="sub">Instalá juegos y parches .pkg directamente a tu PS4 por red local.</p>
+    </div>
+
+    <a class="card" href="https://santij10.github.io/ps4/apk">
+      <div class="card-title">
+        <span>📱 Versión Android / Tablet (APK)</span>
+        <span class="badge">TABLET</span>
+      </div>
+      <p class="card-desc">Ideal para tu Redmi Pad SE o celular Android. Permite instalar juegos directo a tu PS4 sin prender la computadora.</p>
+    </a>
+
+    <a class="card" href="https://santij10.github.io/ps4/pc">
+      <div class="card-title">
+        <span>💻 Versión PC (Windows x64 ZIP)</span>
+        <span class="badge">WINDOWS</span>
+      </div>
+      <p class="card-desc">Versión de escritorio para Windows x64. Descomprimí el archivo ZIP y ejecutá <code>DirectPackageInstaller.Desktop.exe</code>.</p>
+    </a>
+
+    <div class="info">
+      <strong>⚙️ Configuración en la aplicación DPI:</strong><br>
+      • <strong>IP de tu PS4:</strong> <code>192.168.0.17</code><br>
+      • <strong>Puerto RPI:</strong> <code>12800</code><br><br>
+      <strong>🎮 Cómo usarlo:</strong><br>
+      1. En tu PS4 (con GoldHEN activo), abrí la aplicación <strong>Remote Package Installer</strong>.<br>
+      2. En DPI (Tablet o PC), ingresá la IP de tu PS4.<br>
+      3. Seleccioná el archivo <code>.pkg</code> o pegá el link directo generado desde el bot de Telegram y tocá <strong>Install</strong>.
+    </div>
+
+    <a class="back" href="https://santij10.github.io/ps4/">⬅ Volver al Portal GoldHEN 14.00</a>
+  </div>
+</body>
+</html>
