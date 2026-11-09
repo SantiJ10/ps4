@@ -1,21 +1,29 @@
 CACHE MANIFEST
-# Version 2026-11-03-02
-# Copyright (c) 2026 mansoor0x | 1_X @ZeroMan
-CACHE:
-./
-./index.html
-./cache.html
-./exploit.html
-./launch.js
-./exploit.js
-./core.js
-./mem.js
-./int64.js
-./ps4_offsets.js
-./afterglow.js
-./goldhen.bin
-./oup/1352.bin
-./oup/1400.bin
+# GoldHEN-only safe manifest
+# 2026-11-06T20:19:34.173984+00:00
+
+index.html #dc6312a32e1a6391ec8c6d4e9a4cdb5e
+jb.html #a8b7d9ec4f96f3749bc2f925b6e9dcfc
+style.css #906c3f231e07039e54cdb57471251cd9
+launch.js #0116dcfa88d638a51bf6b0d96b6639e8
+meme.png #bfce116aec5b015e29c0b13e96782fc8
+jb.js #274baee71c129094ce838d120e8b34f6
+core.js #923ba80e1eca9f2e72f2b1ba2c15736c
+mem.js #e58704779bc896cf25c371181f7986d3
+int64.js #15181de17bb63f316f10c0e1ce8cb634
+ps4_offsets.js #d0602e5aea0bb8e117040940bbd3d70e
+afterglow.js #6836fc4e212a84fbe3c23e2f88e6ef1f
+patchset-1300.bin #7a18b1f8d37a2ef5e1becd51714a3783
+patchset-1302.bin #a92beb75ad78986b39cc27e53d6d69a6
+patchset-1304.bin #a92beb75ad78986b39cc27e53d6d69a6
+patchset-1350.bin #6f60cedb25810886b96227b3e3c2d2b5
+patchset-1352.bin #adfb9771904f71cd1f5a82cbded8ac46
+patchset-1400.bin #615f275b96831cc04173757db39e93f0
+hen.bin #39452f5e1c305ac9efcb4745eef7958b
+goldhen.bin #39452f5e1c305ac9efcb4745eef7958b
+
+FALLBACK:
+jb.html jb.html
 
 NETWORK:
 *
