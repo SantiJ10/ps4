@@ -5,7 +5,7 @@
 
 var TARGET = {
   hen: "log=1&afterglow=run&payload=hen.bin",
-  goldhen: "log=1&afterglow=run&mode=goldhen&hx1400=1",
+  goldhen: "log=1&afterglow=run&mode=goldhen",
 };
 
 var AUTOSTART_SECONDS = 5;

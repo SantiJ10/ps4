@@ -27,7 +27,7 @@ const HX_MEM_LEVEL = (function () {
     if (Number.isFinite(n) && n >= 1 && n <= 5) return n;
   } catch (e) {}
 
-  return HX1400_LIGHT_CORE ? 2 : 0;
+  return 0;
 })();
 
 const HX_MEM_PROFILES = [

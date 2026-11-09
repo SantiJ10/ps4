@@ -1,15 +1,15 @@
 CACHE MANIFEST
 # GoldHEN safe manifest v14.00-light
-# 2026-11-09T15:40:45Z
+# 2026-11-09T15:52:58Z
 
 index.html #4fb8325d860feea26645dccc50d0f809
 cache.html #12c411a9e81d3601ea3f4653973bf94c
 jb.html #67c1b1604a828cd86bc4616bbb916a55
 style.css #318a183381391283588db32833ee32d3
-launch.js #6b4d6ab4286d787663383006fd0d2e49
+launch.js #810fc01b6fe0c3982dd3ceb7fdabab22
 meme.png #08206a31751c586d7d2f0fac18e61ed8
 jb.js #d78f2b806d4c3653d06daf12e019a61b
-core.js #736489fb3176486dc51203b33bc90c9d
+core.js #ea177f77bc0432d1b54218affcf15bab
 mem.js #f57ea703ef12221f98bd790187d03bde
 int64.js #85d5a0907a7c78dbd170667075bdad9b
 ps4_offsets.js #4a1e0cedd82031f64e1c0bb35d2cfcdd
