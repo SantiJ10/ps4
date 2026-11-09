@@ -1,46 +1,56 @@
 <!doctype html>
-<html class="landing" lang="en" manifest="cache.appcache">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>afterglow</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- Every run starts from here. The referrer guard in jb.js arms the chain
-         only when it was reached from this page, so that a browser restoring
-         its last session cannot re-run it unattended. -->
-    <div id="brand"><b>afterglow</b></div>
+<html class="landing" lang="es" manifest="cache.appcache">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Santi PS4 Hub · GoldHEN 14.00</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header bar -->
+  <div id="brand">
+    <b>Santi PS4 Hub</b>
+    <span class="brand-tag">FW 14.00</span>
+  </div>
 
-    <div class="shell">
-      <img class="meme" src="meme.png" alt="" />
+  <div class="shell">
+    <main class="panel">
+      <div class="title-box">
+        <h1>GoldHEN Exploit</h1>
+        <p>Motor Afterglow Estable &middot; Firmware <span>14.00</span></p>
+      </div>
 
-      <main class="panel">
-        <p class="lede">PS4 firmware 12.00 &ndash; 14.00 <span class="soon">&middot; 14.02 soon</span></p>
+      <form class="pick" id="pick">
+        <!-- Solo GoldHEN: preseleccionado y unico -->
+        <input type="radio" name="payload" value="goldhen" checked style="display:none;" />
 
-        <form class="pick" id="pick">
-          <label class="opt">
-            <input type="radio" name="payload" value="hen" />
-            <span>ps4-hen</span>
-          </label>
-          <label class="opt">
-            <input type="radio" name="payload" value="goldhen" checked />
-            <span>GoldHEN</span>
-          </label>
+        <div class="payload-active">
+          <div class="dot-pulse"></div>
+          <div class="payload-meta">
+            <strong>GoldHEN v2.4b18.13</strong>
+            <span>Payload único activado · Ultra Estable</span>
+          </div>
+        </div>
 
-          <label class="opt opt-auto">
-            <input type="checkbox" id="auto" checked />
-            <span>autostart</span>
-          </label>
+        <label class="opt-auto">
+          <span>Autostart (Estabilizador RAM 5s)</span>
+          <input type="checkbox" id="auto" checked />
+        </label>
 
-          <button class="btn" type="submit">start</button>
-          <p class="count" id="count"></p>
-          <p class="count" id="cache" aria-live="polite"></p>
-        </form>
-      </main>
-    </div>
+        <button class="btn btn-gold" type="submit">⚡ Iniciar GoldHEN Ahora</button>
+        <a class="btn btn-secondary" href="dpi.html">📲 Descargar DPI (Tablet / PC)</a>
 
-    <p class="byline">by well0nez/m0zz</p>
-    <script src="launch.js"></script>
-  </body>
+        <p class="count" id="count"></p>
+        <p class="count cache-note" id="cache" aria-live="polite"></p>
+      </form>
+
+      <div class="tips-box">
+        <p>💡 <strong>100% Offline:</strong> Guardá esta página en Marcadores de la PS4. Una vez guardada la caché, funciona sin internet.</p>
+      </div>
+    </main>
+  </div>
+
+  <p class="byline">by well0nez/m0zz · Adaptado para Santi</p>
+  <script src="launch.js"></script>
+</body>
 </html>

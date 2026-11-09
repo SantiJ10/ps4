@@ -1,309 +1,253 @@
-/* afterglow -- shared styling for the landing page and the run page.
-
-   The page kind sits on <html> (.landing / .run), never on <body>: jb.js owns
-   the body classes .log, .done and .fail and replaces them wholesale, so a
-   page-kind class on <body> would not survive the first state change. */
+/* Santi PS4 Hub · Afterglow Styling
+   Optimized for PS4 browser resolution & dark gaming theme */
 
 :root {
-  --bg: #0b0d10;
-  --panel: #0e1116;
-  --sunk: #11151b;
-  --line: #1e2732;
-
-  --fg: #c8ced8;
-  --bright: #e6ebf2;
-  --dim: #7c8798;
-  --faint: #4d5765;
-
-  --ok: #7fd0a0;
-  --bad: #d08a7f;
-  --warn: #d8c07f;
-
-  --sans: "Segoe UI", system-ui, sans-serif;
+  --bg: #07090e;
+  --panel: #0e121b;
+  --panel-card: #121824;
+  --line: #1e293b;
+  --line-focus: #334155;
+  --fg: #e2e8f0;
+  --bright: #ffffff;
+  --dim: #94a3b8;
+  --faint: #64748b;
+  --gold: #f59e0b;
+  --gold-hover: #d97706;
+  --gold-glow: rgba(245, 158, 11, 0.25);
+  --gold-bg: rgba(245, 158, 11, 0.08);
+  --ok: #10b981;
+  --ok-bg: rgba(16, 185, 129, 0.12);
+  --bad: #ef4444;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --mono: Consolas, "DejaVu Sans Mono", monospace;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html,
 body {
-  margin: 0;
-  padding: 0;
   min-height: 100%;
   background: var(--bg);
+  background-image: radial-gradient(circle at 50% 25%, #151c2e 0%, #07090e 85%);
   color: var(--fg);
-  font: 15px/1.45 var(--sans);
+  font: 15px/1.5 var(--sans);
 }
 
-/* --- the bar at the top of both pages ----------------------------------- */
-
+/* Header bar */
 #brand {
-  padding: 8px 10px;
+  padding: 12px 18px;
   border-bottom: 1px solid var(--line);
-  background: var(--panel);
-  text-align: center;
+  background: rgba(14, 18, 27, 0.85);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #brand b {
   color: var(--bright);
-  font-size: 15px;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.brand-tag {
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.14em;
-  vertical-align: middle;
+  color: var(--gold);
+  background: var(--gold-bg);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 3px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.05em;
+}
+
+/* Center layout */
+.shell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: calc(100vh - 50px);
+  padding: 24px 20px 48px;
+}
+
+.panel {
+  width: 100%;
+  max-width: 440px;
+  background: rgba(18, 24, 36, 0.9);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 28px 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 40px rgba(245, 158, 11, 0.04);
+  text-align: center;
+}
+
+.title-box {
+  margin-bottom: 20px;
+}
+
+.title-box h1 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+  letter-spacing: -0.02em;
+}
+
+.title-box p {
+  color: var(--dim);
+  font-size: 13px;
+}
+
+.title-box p span {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+/* Active Payload Box (Only GoldHEN) */
+.payload-active {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(245, 158, 11, 0.06);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  text-align: left;
+}
+
+.dot-pulse {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 10px var(--gold);
+  flex-shrink: 0;
+}
+
+.payload-meta {
+  flex: 1;
+}
+
+.payload-meta strong {
+  display: block;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.payload-meta span {
+  font-size: 11px;
+  color: #cbd5e1;
+}
+
+/* Autostart checkbox */
+.opt-auto {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  padding: 10px 14px;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--dim);
+  font-size: 13px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.opt-auto input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--gold);
+}
+
+/* Buttons */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 13px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #07090e;
+  box-shadow: 0 4px 16px var(--gold-glow);
+}
+
+.btn-gold:hover,
+.btn-gold:focus {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.btn-secondary {
+  margin-top: 10px;
+  background: #0b1120;
+  border: 1px solid var(--line);
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+.btn-secondary:hover {
+  border-color: #38bdf8;
+  background: #0f172a;
+}
+
+/* Status & Count readouts */
+.count {
+  margin-top: 14px;
+  min-height: 18px;
+  color: var(--gold);
+  font: 13px/1.3 var(--mono);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.cache-note {
+  margin-top: 6px;
+  min-height: 16px;
+  color: var(--dim);
+  font-size: 12px;
+}
+
+.tips-box {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 11px;
+  color: var(--faint);
+  line-height: 1.5;
+}
+
+.tips-box strong {
+  color: var(--dim);
 }
 
 .byline {
   position: fixed;
   bottom: 9px;
   left: 11px;
-  z-index: 9;
   margin: 0;
   color: var(--faint);
   font: 11px/1 var(--mono);
   letter-spacing: 0.06em;
-}
-
-/* --- landing page ------------------------------------------------------- */
-
-.shell {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 34px;
-  min-height: calc(100vh - 38px);
-  padding: 28px 20px 46px;
-}
-
-.meme {
-  width: 260px;
-  max-width: 44vw;
-  height: auto;
-}
-
-.panel {
-  width: 300px;
-}
-
-.lede {
-  margin: 0 0 1.6em;
-  color: var(--dim);
-  font-size: 13px;
-  letter-spacing: 0.04em;
-}
-
-/* The note sits on the same line as the supported versions and must read as
-   a note, not as a third supported one -- dimmer, and never broken apart. */
-.lede .soon {
-  opacity: 0.62;
-  white-space: nowrap;
-}
-
-.pick {
-  margin: 0;
-}
-
-.opt {
-  display: block;
-  margin-bottom: 8px;
-  padding: 11px 13px;
-  border: 1px solid var(--line);
-  border-radius: 5px;
-  background: var(--panel);
-  cursor: pointer;
-}
-
-.opt:hover {
-  border-color: #2b3a4c;
-}
-
-.opt input {
-  margin: 0 9px 0 0;
-  vertical-align: middle;
-}
-
-.opt span {
-  vertical-align: middle;
-}
-
-/* The autostart switch is a different kind of choice from the payload
-   radios, so it sits apart from them rather than looking like a third one. */
-.opt-auto {
-  margin-top: 16px;
-  border-style: dashed;
-  background: none;
-  color: var(--dim);
-  font-size: 14px;
-}
-
-.btn {
-  display: block;
-  width: 100%;
-  margin-top: 16px;
-  padding: 0.8em 1.4em;
-  border: 1px solid #2f4a3c;
-  border-radius: 5px;
-  background: #16231d;
-  color: var(--ok);
-  font: 700 15px/1 var(--sans);
-  letter-spacing: 0.1em;
-  cursor: pointer;
-}
-
-.btn:hover,
-.btn:focus {
-  border-color: var(--ok);
-  outline: none;
-}
-
-.count {
-  margin: 12px 0 0;
-  min-height: 1.2em;
-  color: var(--ok);
-  font: 12px/1.2 var(--mono);
-  letter-spacing: 0.05em;
-}
-
-/* --- run page ----------------------------------------------------------- */
-
-/* Running: a spinner under the bar. jb.js switches the body to .done, .fail
-   or .log. */
-#spin {
-  position: fixed;
-  top: calc(50% + 20px);
-  left: 50%;
-  width: 46px;
-  height: 46px;
-  margin: -23px 0 0 -23px;
-  border: 4px solid var(--line);
-  border-top-color: var(--ok);
-  border-radius: 50%;
-  animation: spin 0.9s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-#msg {
-  position: fixed;
-  top: 50%;
-  left: 0;
-  right: 0;
-  transform: translateY(-50%);
-  display: none;
-  text-align: center;
-  font-size: 16px;
-  letter-spacing: 0.5px;
-}
-
-#wrap {
-  padding: 0;
-}
-
-#state,
-#out {
-  display: none;
-}
-
-body.done #spin,
-body.fail #spin {
-  display: none;
-}
-
-body.fail #msg {
-  display: block;
-}
-
-body.done #msg {
-  display: block;
-  color: var(--ok);
-  font-weight: 700;
-  letter-spacing: 2px;
-}
-
-/* ?log=1 -- the full step log. The column is laid out with flex rather than
-   by subtracting the header height from 100vh: the log then keeps filling
-   the page whatever the strip above it ends up being. */
-body.log {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
-body.log #spin,
-body.log #msg {
-  display: none;
-}
-
-body.log #wrap {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-height: 0;
-  padding: 14px 18px 30px;
-}
-
-body.log #state {
-  display: block;
-  margin: 0 0 8px;
-  font-size: 22px;
-  font-weight: 700;
-}
-
-body.log #out {
-  display: block;
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  padding: 10px 12px;
-  border: 1px solid var(--line);
-  border-radius: 5px;
-  background: var(--sunk);
-  font: 12px/1.45 var(--mono);
-  white-space: pre-wrap;
-}
-
-/* The live heap readout sits in the flow under the bar. Nothing on this page
-   scrolls the document itself -- the log has its own scroll box -- so it
-   stays in view without being positioned over the wordmark. */
-#ramBox {
-  overflow: hidden;
-  padding: 5px 10px;
-  border-bottom: 1px solid var(--line);
-  background: var(--sunk);
-  color: var(--ok);
-  font: 11px/1.4 var(--mono);
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* The retry notice, raised by jb.js when the chain throws or stalls. */
-.notice {
-  margin: 1em 0;
-  padding: 0.7em 1em;
-  border: 2px solid #e66;
-  background: #2a1414;
-  color: #f99;
-  font: 700 20px/1.4 var(--sans);
-}
-
-.ok {
-  color: var(--ok);
-}
-
-.bad {
-  color: var(--bad);
-}
-
-.warn {
-  color: var(--warn);
-}
-
-code {
-  color: #9fb3d0;
 }
