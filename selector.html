@@ -1,0 +1,147 @@
+<!doctype html>
+<html class="landing selector-page" lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Santi PS4 Hub · Selector de Motores</title>
+  <link rel="stylesheet" href="selector.css" />
+</head>
+<body>
+  <!-- Header bar consistente con Santi PS4 Hub -->
+  <div id="brand">
+    <b>Santi PS4 Hub</b>
+    <div class="brand-right">
+      <span class="brand-tag" id="fw-badge">FW Detectando...</span>
+      <span class="brand-tag tag-net" id="net-badge">Red: Verificando...</span>
+    </div>
+  </div>
+
+  <div class="shell">
+    <main class="panel panel-wide">
+      <div class="title-box">
+        <h1>Selector de Alternativas Exploit</h1>
+        <p>Seleccioná una única cadena de activación &middot; <span>Sin ejecución automática en esta vista</span></p>
+      </div>
+
+      <!-- Aviso de estado de firmware y seguridad -->
+      <div class="guard-banner" id="fw-notice" role="status" aria-live="polite">
+        Verificando entorno del navegador...
+      </div>
+
+      <!-- Tarjetas de alternativas -->
+      <div class="cards-grid" id="cards-container">
+
+        <!-- Opción 1: Afterglow Actual (Host Local / Offline) -->
+        <section class="engine-card card-primary" data-engine="afterglow">
+          <div class="card-header">
+            <div class="dot-pulse"></div>
+            <div class="card-title-group">
+              <h2>1. Afterglow Actual (Santi PS4 Hub)</h2>
+              <span class="badge badge-local">PRINCIPAL · CACHÉ OFFLINE ACTIVA</span>
+            </div>
+          </div>
+          <p class="card-desc">
+            Motor actual verificado en este host (`well0nez/afterglow-web` ref. <code>3acdb050</code>). Conserva el estabilizador RAM de 5s, desarme de descriptores <code>/dev/apm</code> y funcionamiento 100% sin internet.
+          </p>
+          <ul class="meta-list">
+            <li><strong>Fuente:</strong> Host actual (<code>index.html</code> &rarr; <code>jb.html</code>)</li>
+            <li><strong>Firmwares:</strong> 14.00 (tablas internas: 12.00 a 14.00)</li>
+            <li><strong>Payload:</strong> GoldHEN v2.4b18.13 (<code>goldhen.bin</code>)</li>
+            <li><strong>Red / Caché:</strong> Funciona Offline (<code>cache.appcache</code> local)</li>
+          </ul>
+          <div class="card-actions">
+            <a class="btn btn-gold" id="btn-afterglow" href="index.html">⚡ Ir al Lanzador Afterglow (Principal)</a>
+          </div>
+        </section>
+
+        <!-- Opción 2: MPS / mansoor0x (Enlace Externo) -->
+        <section class="engine-card card-external" data-engine="mps">
+          <div class="card-header">
+            <div class="dot-ext"></div>
+            <div class="card-title-group">
+              <h2>2. MPS / mansoor0x</h2>
+              <span class="badge badge-ext">EXTERNO · REQUIERE INTERNET</span>
+            </div>
+          </div>
+          <p class="card-desc">
+            Variante externa basada en primitivas WebKit + cadena <code>afterglow</code> publicada por <code>mansoor0x</code>. Útil como alternativa de contraste cuando se dispone de conexión a Internet.
+          </p>
+          <ul class="meta-list">
+            <li><strong>Fuente oficial:</strong> <code>https://mansoor0x.github.io/mps/</code></li>
+            <li><strong>Firmwares:</strong> 12.00 a 14.00 (UI rotulada 14.00)</li>
+            <li><strong>Payload:</strong> GoldHEN v2.4b18.13</li>
+            <li><strong>Advertencia:</strong> No forma parte de nuestra caché offline actual</li>
+          </ul>
+          <div class="card-actions">
+            <button class="btn btn-secondary btn-ext-trigger" type="button"
+                    data-target-id="mps"
+                    data-target-name="MPS / mansoor0x"
+                    data-target-url="https://mansoor0x.github.io/mps/"
+                    data-target-fw="12.00 - 14.00">
+              🌐 Abrir MPS Externo (Requiere Internet)
+            </button>
+          </div>
+        </section>
+
+        <!-- Opción 3: GamerHack G2ALL (Enlace Externo) -->
+        <section class="engine-card card-external" data-engine="g2all">
+          <div class="card-header">
+            <div class="dot-ext"></div>
+            <div class="card-title-group">
+              <h2>3. GamerHack G2ALL</h2>
+              <span class="badge badge-ext">EXTERNO MULTI-FW · REQUIERE INTERNET</span>
+            </div>
+          </div>
+          <p class="card-desc">
+            Portal externo multi-firmware de <code>@GamerHack93</code>. En firmwares 12.00–14.02 utiliza <code>slopkit/afterglow.js</code> y declara <code>GoldHEN v2.4b18.14</code> con su propio manifiesto externo.
+          </p>
+          <ul class="meta-list">
+            <li><strong>Fuente oficial:</strong> <code>https://gamerhack.github.io/g2all/</code></li>
+            <li><strong>Firmwares:</strong> 5.05 / 7.00 – 14.02 (Afterglow en 12.00–14.02)</li>
+            <li><strong>Payload:</strong> GoldHEN v2.4b18.14 (declarado en host remoto)</li>
+            <li><strong>Advertencia:</strong> No forma parte de nuestra caché offline actual</li>
+          </ul>
+          <div class="card-actions">
+            <button class="btn btn-secondary btn-ext-trigger" type="button"
+                    data-target-id="g2all"
+                    data-target-name="GamerHack G2ALL"
+                    data-target-url="https://gamerhack.github.io/g2all/"
+                    data-target-fw="5.05 / 7.00 - 14.02">
+              🌐 Abrir GamerHack G2ALL Externo (Requiere Internet)
+            </button>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Cuadro de confirmación explícita para alternativas externas -->
+      <div class="confirm-modal" id="confirm-box" hidden>
+        <div class="confirm-inner">
+          <h3 id="confirm-title">Confirmar salida a host externo</h3>
+          <p id="confirm-detail">
+            Vas a salir de <strong>Santi PS4 Hub</strong> hacia un host externo.
+          </p>
+          <ul class="confirm-warnings">
+            <li>Requiere conexión activa a Internet.</li>
+            <li>No utiliza la caché offline (<code>cache.appcache</code>) de Santi PS4 Hub.</li>
+            <li>El host externo puede iniciar su propia descarga de caché o cadena al abrirse.</li>
+          </ul>
+          <div class="confirm-buttons">
+            <a class="btn btn-gold" id="confirm-go" href="#" rel="noopener noreferrer">Confirmar y Abrir Host Externo</a>
+            <button class="btn btn-cancel" id="confirm-cancel" type="button">Cancelar y Permanecer Aquí</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tips-box">
+        <p>
+          🛡️ <strong>Modo Seguro:</strong> Esta página es únicamente un selector pasivo. No carga módulos de explotación ni altera tu caché offline actual. Para volver al inicio rápido con autostart de 5 segundos, elegí <strong>Afterglow Actual</strong>.
+        </p>
+      </div>
+    </main>
+  </div>
+
+  <p class="byline">Santi PS4 Hub · Selector Multiexploit (Prototipo Etapa 1)</p>
+  <script src="selector.js"></script>
+</body>
+</html>
