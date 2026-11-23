@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es" manifest="cache.appcache">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Santi PS4 Hub - Instalación offline</title>
+<style>
+html,body{margin:0;min-height:100%;font:16px/1.5 Arial,Helvetica,sans-serif;background:#090c12;color:#e2e8f0}
+*{box-sizing:border-box}
+main{max-width:690px;margin:32px auto;padding:26px 22px;border-radius:14px;border:1px solid #313945;background:#121824}
+h1{font-size:24px;color:#fbbf24;margin:0 0 10px}
+h2{font-size:17px;margin:20px 0 8px}
+p{margin:10px 0}
+.panel{background:#1a2231;border-left:4px solid #f59e0b;padding:13px;margin:18px 0;border-radius:5px}
+.good{border-color:#10b981}
+.bad{border-color:#ef4444}
+.small{color:#a4b1c2;font-size:14px}
+strong{color:#fff}
+code{color:#fde68a;overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+<main>
+<h1>Santi PS4 Hub - Instalador offline</h1>
+<p>Esta página prepara la caché local de <strong>Afterglow / GoldHEN para PS4 FW 14.00</strong>. No ejecuta exploits, no abre el lanzador y no modifica la consola.</p>
+<div id="cache-state" class="panel" role="status" aria-live="polite">Verificando compatibilidad con ApplicationCache...</div>
+<p id="cache-detail" class="small">Con Internet activo, mantené esta página abierta hasta ver una confirmación. Si falla, no borres datos del navegador.</p>
+<h2>Una vez completada</h2>
+<p>Cerrá el navegador. Después, cuando quieras probar la instalación offline, desactivá Internet y abrí directamente <code>https://santij10.github.io/ps4/index.html</code>.</p>
+<p class="small"><strong>Atención:</strong> el lanzador principal conserva su inicio automático de 5 segundos y puede intentar activar GoldHEN al abrirse. No lo abras solo para comprobar el diseño.</p>
+<p class="small">La instalación depende de que el navegador PS4 acepte y descargue todos los archivos del manifiesto <code>cache.appcache</code>. Esta página no prueba la activación de GoldHEN.</p>
+</main>
+<script>
+(function(){
+  "use strict";
+  var box=document.getElementById("cache-state");
+  var detail=document.getElementById("cache-detail");
+  var cache=null;
+  try{cache=window.applicationCache||null;}catch(e){}
+  function show(message,klass,explain){
+    box.className="panel"+(klass?" "+klass:"");
+    box.textContent=message;
+    if(explain)detail.textContent=explain;
+  }
+  if(!cache){
+    show("ApplicationCache no está disponible en este navegador.","bad","Esta página se diseñó para el navegador de PS4. No consideres instalada la caché aquí.");
+    return;
+  }
+  function onEvent(e){
+    var type=e&&e.type?e.type:"";
+    if(type==="checking")show("Verificando manifiesto de Afterglow...","","No cierres esta página mientras se comprueba la caché.");
+    else if(type==="downloading")show("Descargando recursos de Afterglow...","","Esperá a que termine la descarga; no abras el lanzador.");
+    else if(type==="progress"){
+      if(e.lengthComputable&&e.total>0)show("Descargando recursos: "+e.loaded+" / "+e.total,"","Mantené esta página abierta.");
+      else show("Descargando recursos de Afterglow...","","Mantené esta página abierta.");
+    }
+    else if(type==="cached")show("Caché Afterglow instalada (evento cached).","good","Terminó la instalación inicial. Cerrá el navegador antes de probar sin Internet.");
+    else if(type==="noupdate")show("Caché Afterglow verificada (evento noupdate).","good","Existe una caché asociada y no se detectaron actualizaciones. Para confirmar su uso, probá sin Internet.");
+    else if(type==="updateready")show("Actualización de caché descargada (evento updateready).","good","Cerrá y reabrí el navegador para utilizar la versión actualizada antes de probar sin Internet.");
+    else if(type==="error")show("Error al descargar o verificar la caché (evento error).","bad","No borres datos ni inicies el exploit. Revisaremos el mensaje y el manifiesto.");
+    else if(type==="obsolete")show("Caché marcada como obsoleta (evento obsolete).","bad","No consideres disponible la instalación offline.");
+  }
+  var events=["checking","downloading","progress","cached","noupdate","updateready","error","obsolete"];
+  for(var i=0;i<events.length;i++){try{cache.addEventListener(events[i],onEvent,false);}catch(e){}}
+  try{
+    if(cache.status===cache.UNCACHED)show("Aún no hay caché asociada (UNCACHED).","","Esperá una señal de descarga o error.");
+    else if(cache.status===cache.CHECKING)show("Verificando manifiesto de Afterglow...");
+    else if(cache.status===cache.DOWNLOADING)show("Descargando recursos de Afterglow...");
+    else if(cache.status===cache.UPDATEREADY)show("Actualización descargada (UPDATEREADY).","good","Reabrí esta página antes de usar Afterglow offline.");
+    else if(cache.status===cache.IDLE)show("Caché asociada (IDLE).","","Esperá el evento noupdate o cached; el estado por sí solo no demuestra una prueba offline en PS4.");
+    else if(cache.status===cache.OBSOLETE)show("Caché obsoleta (OBSOLETE).","bad");
+  }catch(e){show("No se pudo consultar ApplicationCache.","bad");}
+})();
+</script>
+</body>
+</html>
