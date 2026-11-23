@@ -1,4 +1,4 @@
-/* Santi PS4 Hub · Selector Multiexploit (Etapa 1 - Prototipo Aislado)
+/* Santi PS4 Hub · Selector Multiexploit Offline (Etapa 4 - Prototipo Aislado)
    Mantiene la paleta y tipografía de style.css sin alterar el host original */
 
 :root {
@@ -81,9 +81,9 @@ body {
 }
 
 .tag-net.offline {
-  color: var(--bad);
-  background: var(--bad-bg);
-  border-color: rgba(239, 68, 68, 0.35);
+  color: var(--gold);
+  background: var(--gold-bg);
+  border-color: rgba(245, 158, 11, 0.45);
 }
 
 .shell {
@@ -107,7 +107,7 @@ body {
 
 .title-box {
   text-align: center;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .title-box h1 {
@@ -128,7 +128,7 @@ body {
 }
 
 .guard-banner {
-  margin-bottom: 18px;
+  margin-bottom: 8px;
   padding: 10px 14px;
   border-radius: 10px;
   border: 1px solid var(--line);
@@ -148,6 +148,15 @@ body {
   border-color: rgba(16, 185, 129, 0.4);
   color: #a7f3d0;
   background: rgba(16, 185, 129, 0.08);
+}
+
+.cache-note {
+  margin-bottom: 14px;
+  min-height: 16px;
+  color: var(--dim);
+  font-size: 11px;
+  text-align: center;
+  font-family: var(--mono);
 }
 
 .cards-grid {
@@ -300,11 +309,9 @@ code {
   outline: none;
 }
 
-.btn-secondary.is-disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  border-color: var(--line);
-  color: var(--faint);
+.btn-secondary.is-offline-cached {
+  border-color: rgba(245, 158, 11, 0.45);
+  color: #fde68a;
 }
 
 .btn-cancel {
@@ -334,10 +341,21 @@ code {
   margin-bottom: 10px;
 }
 
+.offline-modal-alert {
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(245, 158, 11, 0.5);
+  background: rgba(245, 158, 11, 0.1);
+  color: #fde68a;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
 .confirm-warnings {
   margin: 0 0 14px 18px;
   font-size: 12px;
-  color: #fde68a;
+  color: #cbd5e1;
 }
 
 .confirm-warnings li + li {

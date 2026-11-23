@@ -1,9 +1,9 @@
 <!doctype html>
-<html class="landing selector-page" lang="es">
+<html class="landing selector-page" lang="es" manifest="selector.appcache">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Santi PS4 Hub · Selector de Motores</title>
+  <title>Santi PS4 Hub · Selector de Motores (Offline-Ready)</title>
   <link rel="stylesheet" href="selector.css" />
 </head>
 <body>
@@ -23,10 +23,11 @@
         <p>Seleccioná una única cadena de activación &middot; <span>Sin ejecución automática en esta vista</span></p>
       </div>
 
-      <!-- Aviso de estado de firmware y seguridad -->
+      <!-- Aviso de estado de firmware y caché del selector -->
       <div class="guard-banner" id="fw-notice" role="status" aria-live="polite">
         Verificando entorno del navegador...
       </div>
+      <p class="cache-note" id="selector-cache-status" aria-live="polite"></p>
 
       <!-- Tarjetas de alternativas -->
       <div class="cards-grid" id="cards-container">
@@ -37,17 +38,17 @@
             <div class="dot-pulse"></div>
             <div class="card-title-group">
               <h2>1. Afterglow Actual (Santi PS4 Hub)</h2>
-              <span class="badge badge-local">PRINCIPAL · CACHÉ OFFLINE ACTIVA</span>
+              <span class="badge badge-local">PRINCIPAL · CACHÉ OFFLINE PROPIA</span>
             </div>
           </div>
           <p class="card-desc">
-            Motor actual verificado en este host (`well0nez/afterglow-web` ref. <code>3acdb050</code>). Conserva el estabilizador RAM de 5s, desarme de descriptores <code>/dev/apm</code> y funcionamiento 100% sin internet.
+            Motor actual verificado en este host (<code>well0nez/afterglow-web</code> ref. <code>3acdb050</code>). Conserva el estabilizador RAM de 5s, desarme de descriptores <code>/dev/apm</code> y funcionamiento 100% sin internet.
           </p>
           <ul class="meta-list">
             <li><strong>Fuente:</strong> Host actual (<code>index.html</code> &rarr; <code>jb.html</code>)</li>
             <li><strong>Firmwares:</strong> 14.00 (tablas internas: 12.00 a 14.00)</li>
             <li><strong>Payload:</strong> GoldHEN v2.4b18.13 (<code>goldhen.bin</code>)</li>
-            <li><strong>Red / Caché:</strong> Funciona Offline (<code>cache.appcache</code> local)</li>
+            <li><strong>Manifiesto:</strong> <code>cache.appcache</code> (origen local)</li>
           </ul>
           <div class="card-actions">
             <a class="btn btn-gold" id="btn-afterglow" href="index.html">⚡ Ir al Lanzador Afterglow (Principal)</a>
@@ -60,25 +61,25 @@
             <div class="dot-ext"></div>
             <div class="card-title-group">
               <h2>2. MPS / mansoor0x</h2>
-              <span class="badge badge-ext">EXTERNO · REQUIERE INTERNET</span>
+              <span class="badge badge-ext">DOMINIO EXTERNO · CACHÉ PROPIA</span>
             </div>
           </div>
           <p class="card-desc">
-            Variante externa basada en primitivas WebKit + cadena <code>afterglow</code> publicada por <code>mansoor0x</code>. Útil como alternativa de contraste cuando se dispone de conexión a Internet.
+            Variante externa publicada por <code>mansoor0x</code>. Requiere Internet en la primera visita; solo funciona offline si su propio manifiesto externo ya fue cacheado en esta PS4.
           </p>
           <ul class="meta-list">
             <li><strong>Fuente oficial:</strong> <code>https://mansoor0x.github.io/mps/</code></li>
-            <li><strong>Firmwares:</strong> 12.00 a 14.00 (UI rotulada 14.00)</li>
+            <li><strong>Firmwares:</strong> 12.00 a 14.00 (offline en vivo: 13.52 y 14.00)</li>
             <li><strong>Payload:</strong> GoldHEN v2.4b18.13</li>
-            <li><strong>Advertencia:</strong> No forma parte de nuestra caché offline actual</li>
+            <li><strong>Manifiesto externo:</strong> <code>mansoor0x.../cache.appcache</code></li>
           </ul>
           <div class="card-actions">
             <button class="btn btn-secondary btn-ext-trigger" type="button"
                     data-target-id="mps"
                     data-target-name="MPS / mansoor0x"
                     data-target-url="https://mansoor0x.github.io/mps/"
-                    data-target-fw="12.00 - 14.00">
-              🌐 Abrir MPS Externo (Requiere Internet)
+                    data-target-fw="12.00 - 14.00 (Offline: 13.52 / 14.00)">
+              🌐 Abrir MPS Externo
             </button>
           </div>
         </section>
@@ -89,17 +90,17 @@
             <div class="dot-ext"></div>
             <div class="card-title-group">
               <h2>3. GamerHack G2ALL</h2>
-              <span class="badge badge-ext">EXTERNO MULTI-FW · REQUIERE INTERNET</span>
+              <span class="badge badge-ext">DOMINIO EXTERNO · CACHÉ PROPIA</span>
             </div>
           </div>
           <p class="card-desc">
-            Portal externo multi-firmware de <code>@GamerHack93</code>. En firmwares 12.00–14.02 utiliza <code>slopkit/afterglow.js</code> y declara <code>GoldHEN v2.4b18.14</code> con su propio manifiesto externo.
+            Portal multi-firmware de <code>@GamerHack93</code>. Requiere Internet en la primera visita para instalar <code>cacheslopkit.html</code> (<code>slopkit.manifest</code>) en su dominio.
           </p>
           <ul class="meta-list">
             <li><strong>Fuente oficial:</strong> <code>https://gamerhack.github.io/g2all/</code></li>
             <li><strong>Firmwares:</strong> 5.05 / 7.00 – 14.02 (Afterglow en 12.00–14.02)</li>
             <li><strong>Payload:</strong> GoldHEN v2.4b18.14 (declarado en host remoto)</li>
-            <li><strong>Advertencia:</strong> No forma parte de nuestra caché offline actual</li>
+            <li><strong>Manifiesto externo:</strong> <code>gamerhack.../slopkit.manifest</code></li>
           </ul>
           <div class="card-actions">
             <button class="btn btn-secondary btn-ext-trigger" type="button"
@@ -107,24 +108,27 @@
                     data-target-name="GamerHack G2ALL"
                     data-target-url="https://gamerhack.github.io/g2all/"
                     data-target-fw="5.05 / 7.00 - 14.02">
-              🌐 Abrir GamerHack G2ALL Externo (Requiere Internet)
+              🌐 Abrir GamerHack G2ALL Externo
             </button>
           </div>
         </section>
 
       </div>
 
-      <!-- Cuadro de confirmación explícita para alternativas externas -->
+      <!-- Cuadro de confirmación explícita para alternativas externas (soporta modo Online y modo Offline con caché externa previa) -->
       <div class="confirm-modal" id="confirm-box" hidden>
         <div class="confirm-inner">
           <h3 id="confirm-title">Confirmar salida a host externo</h3>
           <p id="confirm-detail">
             Vas a salir de <strong>Santi PS4 Hub</strong> hacia un host externo.
           </p>
+          <div class="offline-modal-alert" id="confirm-offline-alert" hidden>
+            ⚠️ <strong>Consola sin conexión a Internet detectada:</strong> Este host externo <strong>NO</strong> forma parte de la caché de Santi PS4 Hub. Solo cargará si ya lo abriste previamente con Internet en esta PS4 y completaste su propia caché offline al 100%.
+          </div>
           <ul class="confirm-warnings">
-            <li>Requiere conexión activa a Internet.</li>
-            <li>No utiliza la caché offline (<code>cache.appcache</code>) de Santi PS4 Hub.</li>
-            <li>El host externo puede iniciar su propia descarga de caché o cadena al abrirse.</li>
+            <li>Usa un dominio y un manifiesto <code>ApplicationCache</code> independientes de Santi PS4 Hub.</li>
+            <li>Sin Internet, fallará con error DNS/red si su caché externa no fue instalada antes.</li>
+            <li>Al abrirse, el host externo puede iniciar su propia cadena o instalador de caché automáticamente.</li>
           </ul>
           <div class="confirm-buttons">
             <a class="btn btn-gold" id="confirm-go" href="#" rel="noopener noreferrer">Confirmar y Abrir Host Externo</a>
@@ -135,13 +139,13 @@
 
       <div class="tips-box">
         <p>
-          🛡️ <strong>Modo Seguro:</strong> Esta página es únicamente un selector pasivo. No carga módulos de explotación ni altera tu caché offline actual. Para volver al inicio rápido con autostart de 5 segundos, elegí <strong>Afterglow Actual</strong>.
+          🛡️ <strong>Diseño Offline Seguro:</strong> El selector utiliza su propio manifiesto ligero (<code>selector.appcache</code>) sin tocar <code>cache.appcache</code> ni <code>index.html</code>. Para usar una alternativa externa sin Internet, debés visitarla al menos una vez con conexión para que su dominio guarde su propia caché.
         </p>
       </div>
     </main>
   </div>
 
-  <p class="byline">Santi PS4 Hub · Selector Multiexploit (Prototipo Etapa 1)</p>
+  <p class="byline">Santi PS4 Hub · Selector Multiexploit Offline (Prototipo Etapa 4)</p>
   <script src="selector.js"></script>
 </body>
 </html>
