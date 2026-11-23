@@ -1,10 +1,11 @@
 CACHE MANIFEST
-# Santi PS4 Hub - Independent Selector Manifest (Etapa 5 Local Integration)
-# Zero overlap with cache.appcache
+# Santi PS4 Hub - Independent Selector Cache v2
+# Separate from cache.appcache; no exploit files
 
-selector.html #fa6da8c60471bbcdb03ec69775c48c18
-selector.css #f28683070cfc2e2c4c0fe635ab3601e7
-selector.js #c187567cfc38ac2666b629349c88f6e2
+CACHE:
+selector.html
+selector.css
+selector.js
 
 NETWORK:
 *
